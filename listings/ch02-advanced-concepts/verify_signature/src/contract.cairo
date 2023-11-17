@@ -16,10 +16,11 @@ mod EthSignatureVerifier {
         Signature, Secp256Trait, Secp256PointTrait, ContractAddress, IEthSignatureVerifier,
         EthAddress
     };
+    
     #[storage]
     struct Storage {}
 
-    #[abi(embed_v0)]
+    #[abi(embed_v0)]    //TODO: should use verify_eth_signature instead of is_eth_signature_valid
     impl EthSignatureVerifier of super::IEthSignatureVerifier<ContractState> {
         fn verify_signature(
             ref self: ContractState, msg_hash: u256, signature: Signature, eth_address: EthAddress
